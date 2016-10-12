@@ -1,0 +1,40 @@
+Text Index
+<%
+says = []
+animals = []
+for i in 0..10
+	a = 1
+	
+	if i % 2 > 0
+		 a = Cat.new
+		 says.push("cat")
+	else
+		 a = Kangaroo.new
+ 		 a.lenghtjump  = 10 + i%3
+		 says.push("kangaroo")
+	end
+	a.name = "name" + i.to_s
+	a.sex = i%2
+	a.age = i + 2
+	says.push(a.say)
+	animals.push(a)
+	
+end
+
+max = 0
+
+for i in 0..animals.length-1
+	if animals[i].class == Kangaroo
+		if animals[i].lenghtjump>max
+			max=animals[i].lenghtjump
+		end
+	end	
+end	
+	
+
+
+%>
+<%=max%>
+a = <%= animals.to_json%>
+<br><br>
+b = <%=says.to_json%>
